@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Math Challenge Arena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="particles"></div>
+        
+        <header>
+            <h1>Math Challenge Arena</h1>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-label">Score</span>
+                    <span id="score" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Level</span>
+                    <span id="level" class="stat-value">1</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Lives</span>
+                    <span id="lives" class="stat-value">❤️❤️❤️</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Streak</span>
+                    <span id="streak" class="stat-value">0</span>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div id="timeBar" class="time-bar"></div>
+                <div id="levelProgress" class="level-progress"></div>
+            </div>
+        </header>
+
+        <div class="start-screen screen" id="startScreen">
+            <div class="logo">🧮</div>
+            <h2>Welcome to Math Arena!</h2>
+            <p>Choose your difficulty and prove your mathematical prowess!</p>
+            
+            <div class="difficulty-selector">
+                <button class="difficulty-btn" data-difficulty="easy">
+                    <span class="diff-title">Novice</span>
+                    <span class="diff-desc">Basic arithmetic, 20 seconds per question</span>
+                </button>
+                <button class="difficulty-btn" data-difficulty="medium">
+                    <span class="diff-title">Warrior</span>
+                    <span class="diff-desc">Advanced operations, 15 seconds per question</span>
+                </button>
+                <button class="difficulty-btn" data-difficulty="hard">
+                    <span class="diff-title">Master</span>
+                    <span class="diff-desc">Complex equations, 10 seconds per question</span>
+                </button>
+                <button class="difficulty-btn" data-difficulty="extreme">
+                    <span class="diff-title">Legend</span>
+                    <span class="diff-desc">Mathematical chaos, 8 seconds per question</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="game-screen screen" id="gameScreen">
+            <div class="question-container">
+                <div class="question-type" id="questionType">Algebra Challenge</div>
+                <div id="question" class="question"></div>
+                <div class="timer-circle">
+                    <svg class="timer-svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" class="timer-bg"></circle>
+                        <circle cx="50" cy="50" r="45" class="timer-progress" id="timerCircle"></circle>
+                    </svg>
+                    <div class="timer-text" id="timerText">20</div>
+                </div>
+            </div>
+            
+            <div class="answer-section">
+                <div class="input-container">
+                    <input type="text" id="answerInput" placeholder="Your answer..." maxlength="10">
+                    <button id="submitBtn" class="btn primary">Submit</button>
+                </div>
+                
+                <div class="multiple-choice" id="multipleChoice" style="display: none;">
+                    <button class="choice-btn" data-choice="0"></button>
+                    <button class="choice-btn" data-choice="1"></button>
+                    <button class="choice-btn" data-choice="2"></button>
+                    <button class="choice-btn" data-choice="3"></button>
+                </div>
+            </div>
+            
+            <div id="feedback" class="feedback"></div>
+            
+            <div class="power-ups">
+                <button id="freezeTime" class="power-up" title="Freeze Time (Cost: 100 points)">
+                    ⏰ <span class="power-count" id="freezeCount">3</span>
+                </button>
+                <button id="fiftyFifty" class="power-up" title="50/50 (Cost: 150 points)">
+                    🎯 <span class="power-count" id="fiftyCount">2</span>
+                </button>
+                <button id="skipQuestion" class="power-up" title="Skip Question (Cost: 50 points)">
+                    ⏭️ <span class="power-count" id="skipCount">5</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="result-screen screen" id="resultScreen">
+            <div class="result-animation" id="resultAnimation">🏆</div>
+            <h2 id="resultTitle">Game Over!</h2>
+            <div class="result-stats">
+                <div class="stat-row">
+                    <span>Final Score:</span>
+                    <span id="finalScore" class="highlight">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Highest Level:</span>
+                    <span id="highestLevel" class="highlight">1</span>
+                </div>
+                <div class="stat-row">
+                    <span>Questions Solved:</span>
+                    <span id="questionsAnswered" class="highlight">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Accuracy:</span>
+                    <span id="accuracy" class="highlight">0%</span>
+                </div>
+                <div class="stat-row">
+                    <span>Best Streak:</span>
+                    <span id="bestStreak" class="highlight">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Time Played:</span>
+                    <span id="timePlayed" class="highlight">0:00</span>
+                </div>
+            </div>
+            
+            <div class="achievements" id="achievements"></div>
+            
+            <div class="result-actions">
+                <button id="restartBtn" class="btn primary">Play Again</button>
+                <button id="shareBtn" class="btn secondary">Share Score</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="combo-display" id="comboDisplay"></div>
+    <script src="script.js"></script>
+</body>
+</html>
